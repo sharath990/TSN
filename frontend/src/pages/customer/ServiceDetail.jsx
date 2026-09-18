@@ -4,6 +4,7 @@ import { serviceAPI, paymentAPI, serviceAreaAPI } from '../../api';
 import { useAuth } from '../../context/AuthContext';
 import { useCashfree } from '../../hooks/useCashfree';
 import { AddressInput } from '../../components/common/AddressInput';
+import { getImageUrl } from '../../utils/images';
 import toast from 'react-hot-toast';
 import { FiClock, FiArrowLeft, FiCheck, FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import './Customer.css';
@@ -227,7 +228,7 @@ export const ServiceDetail = () => {
         <div className="service-detail-info">
           {service.image && (
             <img
-              src={`/uploads/services/${service.image}`}
+              src={getImageUrl(`/uploads/services/${service.image}`)}
               alt={service.name}
               className="service-detail-image"
             />

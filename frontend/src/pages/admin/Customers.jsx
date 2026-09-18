@@ -5,7 +5,7 @@ import { SearchInput } from '../../components/common/SearchInput';
 import { SortableHeader } from '../../components/common/SortableHeader';
 import { Pagination } from '../../components/common/Pagination';
 import toast from 'react-hot-toast';
-import { FiEye, FiUserCheck, FiUserX } from 'react-icons/fi';
+import { FiEye, FiUserCheck, FiUserX, FiMail, FiPhone, FiCalendar, FiBookOpen } from 'react-icons/fi';
 import { Modal } from '../../components/common/Modal';
 import './Admin.css';
 
@@ -135,26 +135,74 @@ export const Customers = () => {
 
       <Modal isOpen={detailModal} onClose={() => setDetailModal(false)} title="Customer Details" size="lg">
         {selectedCustomer && (
-          <div className="booking-detail">
-            <div className="detail-row">
-              <span className="detail-label">Name:</span>
-              <span>{selectedCustomer.name}</span>
+          <div className="customer-profile">
+            {/* Header */}
+            <div className="customer-profile-header">
+              <div className="customer-avatar">
+                {selectedCustomer.name?.charAt(0).toUpperCase()}
+              </div>
+              <div className="customer-profile-info">
+                <h3 className="customer-profile-name">{selectedCustomer.name}</h3>
+                <span className="customer-profile-email">{selectedCustomer.email}</span>
+              </div>
+              <div className="customer-profile-status">
+                <Badge status={selectedCustomer.status} />
+              </div>
             </div>
-            <div className="detail-row">
-              <span className="detail-label">Email:</span>
-              <span>{selectedCustomer.email}</span>
+
+            {/* Info Grid */}
+            <div className="customer-info-grid">
+              <div className="customer-info-item">
+                <FiMail className="customer-info-icon" />
+                <div>
+                  <span className="customer-info-label">Email</span>
+                  <span className="customer-info-value">{selectedCustomer.email}</span>
+                </div>
+              </div>
+              <div className="customer-info-item">
+                <FiPhone className="customer-info-icon" />
+                <div>
+                  <span className="customer-info-label">Phone</span>
+                  <span className="customer-info-value">{selectedCustomer.phone || 'Not provided'}</span>
+                </div>
+              </div>
+              <div className="customer-info-item">
+                <FiBookOpen className="customer-info-icon" />
+                <div>
+                  <span className="customer-info-label">Total Bookings</span>
+                  <span className="customer-info-value">{selectedCustomer.bookingCount || 0}</span>
+                </div>
+              </div>
+              <div className="customer-info-item">
+                <FiCalendar className="customer-info-icon" />
+                <div>
+                  <span className="customer-info-label">Joined</span>
+                  <span className="customer-info-value">
+                    {selectedCustomer.createdAt
+                      ? new Date(selectedCustomer.createdAt).toLocaleDateString('en-IN', {
+                          day: 'numeric', month: 'short', year: 'numeric'
+                        })
+                      : '-'}
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="detail-row">
-              <span className="detail-label">Phone:</span>
-              <span>{selectedCustomer.phone || '-'}</span>
-            </div>
-            <div className="detail-row">
-              <span className="detail-label">Status:</span>
-              <Badge status={selectedCustomer.status} />
-            </div>
-            <div className="detail-row">
-              <span className="detail-label">Total Bookings:</span>
-              <span>{selectedCustomer.bookingCount || 0}</span>
+
+            {/* Actions */}
+            <div className="customer-profile-actions">
+              <button
+                className={`btn ${selectedCustomer.status === 'active' ? 'btn-danger' : 'btn-primary'}`}
+                onClick={() => {
+                  handleToggleStatus(selectedCustomer.id, selectedCustomer.status);
+                  setDetailModal(false);
+                }}
+              >
+                {selectedCustomer.status === 'active' ? (
+                  <><FiUserX /> Deactivate Account</>
+                ) : (
+                  <><FiUserCheck /> Activate Account</>
+                )}
+              </button>
             </div>
           </div>
         )}

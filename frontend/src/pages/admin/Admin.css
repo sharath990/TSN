@@ -14,6 +14,120 @@
   gap: 0.75rem;
 }
 
+/* ===========================
+   CUSTOMER PROFILE MODAL
+   =========================== */
+.customer-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.customer-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.customer-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-white);
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.customer-profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.customer-profile-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: 0.125rem;
+}
+
+.customer-profile-email {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-500);
+}
+
+.customer-info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.customer-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--color-gray-50);
+}
+
+.customer-info-item:last-child {
+  border-bottom: none;
+}
+
+.customer-info-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(0, 66, 80, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.customer-info-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+}
+
+.customer-info-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-gray-400);
+}
+
+.customer-info-value {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-gray-800);
+}
+
+.customer-profile-actions {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.customer-profile-actions .btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-size: var(--font-size-sm);
+}
+
 /* Booking Detail */
 /* ===========================
    INVOICE / BILLING LAYOUT

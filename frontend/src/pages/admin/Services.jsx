@@ -6,6 +6,7 @@ import { Badge } from '../../components/common/Badge';
 import { SearchInput } from '../../components/common/SearchInput';
 import { SortableHeader } from '../../components/common/SortableHeader';
 import { Pagination } from '../../components/common/Pagination';
+import { getImageUrl } from '../../utils/images';
 import toast from 'react-hot-toast';
 import { FiPlus, FiEdit2, FiTrash2, FiImage } from 'react-icons/fi';
 import './Admin.css';
@@ -115,7 +116,7 @@ export const Services = () => {
         fetchSubcategories(service.category_id);
       }
       if (service.image) {
-        setImagePreview(`/uploads/services/${service.image}`);
+        setImagePreview(getImageUrl(`/uploads/services/${service.image}`));
       } else {
         setImagePreview(null);
       }
@@ -252,7 +253,7 @@ export const Services = () => {
                   <td>
                     {service.image ? (
                       <img
-                        src={`/uploads/services/${service.image}`}
+                        src={getImageUrl(`/uploads/services/${service.image}`)}
                         alt={service.name}
                         className="service-thumb"
                       />

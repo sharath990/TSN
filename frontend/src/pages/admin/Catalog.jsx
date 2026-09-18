@@ -4,6 +4,7 @@ import { Modal } from '../../components/common/Modal';
 import { ConfirmDialog } from '../../components/common/ConfirmDialog';
 import { Badge } from '../../components/common/Badge';
 import { SearchInput } from '../../components/common/SearchInput';
+import { getImageUrl } from '../../utils/images';
 import toast from 'react-hot-toast';
 import {
   FiPlus, FiEdit2, FiTrash2, FiChevronLeft,
@@ -123,7 +124,7 @@ export const Catalog = () => {
     if (cat) {
       setEditingCategory(cat);
       setCatForm({ name: cat.name, description: cat.description || '' });
-      setCatImagePreview(cat.image ? `/uploads/categories/${cat.image}` : null);
+      setCatImagePreview(cat.image ? getImageUrl(`/uploads/categories/${cat.image}`) : null);
     } else {
       setEditingCategory(null);
       setCatForm({ name: '', description: '' });
@@ -368,7 +369,7 @@ export const Catalog = () => {
               >
                 <div className="catalog-card-image">
                   {cat.image ? (
-                    <img src={`/uploads/categories/${cat.image}`} alt={cat.name} />
+                    <img src={getImageUrl(`/uploads/categories/${cat.image}`)} alt={cat.name} />
                   ) : (
                     <div className="catalog-card-image-placeholder">
                       <FiGrid />

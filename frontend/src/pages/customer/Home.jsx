@@ -9,6 +9,7 @@ import {
 import slider1 from '../../assets/slider-1.jpg';
 import slider2 from '../../assets/slider-2.jpg';
 import slider3 from '../../assets/slider-3.jpg';
+import { getImageUrl } from '../../utils/images';
 import './Home.css';
 
 const heroSlides = [slider1, slider2, slider3];
@@ -166,7 +167,7 @@ export const Home = () => {
                         >
                           <div className="hero-category-icon">
                             {category.image ? (
-                              <img src={`/uploads/categories/${category.image}`} alt={category.name} />
+                              <img src={getImageUrl(`/uploads/categories/${category.image}`)} alt={category.name} />
                             ) : (
                               <IconComponent />
                             )}

@@ -4,6 +4,7 @@ import { categoryAPI, serviceAPI } from '../../api';
 import { SearchInput } from '../../components/common/SearchInput';
 import { SortableHeader } from '../../components/common/SortableHeader';
 import { Pagination } from '../../components/common/Pagination';
+import { getImageUrl } from '../../utils/images';
 import { FiArrowRight, FiArrowLeft, FiClock, FiBriefcase } from 'react-icons/fi';
 import './Customer.css';
 
@@ -140,7 +141,7 @@ export const Services = () => {
                 <div className="service-card-image-wrapper">
                   {service.image ? (
                     <img
-                      src={`/uploads/services/${service.image}`}
+                      src={getImageUrl(`/uploads/services/${service.image}`)}
                       alt={service.name}
                       className="service-card-image"
                     />
