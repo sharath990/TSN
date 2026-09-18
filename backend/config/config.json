@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "tsn_service_booking",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+    "logging": false,
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "freezeTableName": true
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "",
+    "database": "tsn_service_booking_test",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "mysql",
+    "logging": false
+  }
+}
